@@ -1,10 +1,15 @@
+
 const express = require('express')
-const db = require('./db')
+const router = express.Router();
+
+const db = require('./db/database')
 const jwt = require('jsonwebtoken')
 const bcr = require('bcryptjs')
 
 const app = express()
 const SECRET = process.env.SECRET || 'my-secret-key'
+const userRoutes = require('./routes/users');
+app.use('/users', userRoutes);
 
 app.use(express.json()) // разбираем JSON из тела запроса
 
